@@ -1,6 +1,7 @@
 <template>
   <div ref="root" class="blog page-wrap">
     <section class="section">
+      <SpiralWatermark class="section-watermark" aria-hidden="true" />
       <h1>Blog</h1>
       <p class="lead">
         Psikoloji ve kişisel gelişim üzerine yazılarım.
@@ -22,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
+import SpiralWatermark from '../components/SpiralWatermark.vue'
 
 const root = ref(null)
 useReveal(root)
@@ -68,12 +70,26 @@ function formatDate(dateStr) {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+  background: var(--color-card);
+  position: relative;
+  overflow: hidden;
   transition: box-shadow var(--transition-normal), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.post-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-accent-secondary);
+  opacity: 0.14;
 }
 
 .post-link:hover {
   text-decoration: none;
-  border-color: var(--color-accent);
+  border-color: var(--color-border);
   box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }

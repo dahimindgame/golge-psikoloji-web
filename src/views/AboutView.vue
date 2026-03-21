@@ -1,6 +1,7 @@
 <template>
   <div ref="root" class="about page-wrap">
     <section class="section">
+      <SpiralWatermark class="section-watermark" aria-hidden="true" />
       <h1>Hakkımda</h1>
       <div class="about-grid">
         <div class="about-image">
@@ -48,6 +49,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
+
+import SpiralWatermark from '../components/SpiralWatermark.vue'
 
 const root = ref(null)
 useReveal(root)
@@ -99,7 +102,20 @@ useReveal(root)
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
-  background: var(--color-bg);
+  background: var(--color-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-accent-secondary);
+  opacity: 0.14;
 }
 
 .expertise h2 {

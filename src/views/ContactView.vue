@@ -1,248 +1,99 @@
 <template>
   <div ref="root" class="contact page-wrap">
-    <section class="section">
-      <h1>İletişim</h1>
+    <section class="contact-hero">
+      <p class="eyebrow">İletişim</p>
+      <h1>İletişime Geçin</h1>
       <p class="lead">
-        Randevu almak veya sorularınız için aşağıdaki formu doldurabilir veya doğrudan iletişime geçebilirsiniz.
+        İhtiyacınız olan desteği birlikte değerlendirmek için doğrudan iletişime geçebilirsiniz.
       </p>
-      <div class="contact-layout">
-        <form class="contact-form" @submit.prevent="onSubmit" novalidate>
-          <div class="field">
-            <label for="name">Ad Soyad</label>
-            <input
-              id="name"
-              v-model="form.name"
-              type="text"
-              autocomplete="name"
-              :aria-invalid="errors.name ? 'true' : 'false'"
-              aria-describedby="name-error"
-            />
-            <span id="name-error" class="error" role="alert">{{ errors.name }}</span>
-          </div>
-          <div class="field">
-            <label for="email">E-posta</label>
-            <input
-              id="email"
-              v-model="form.email"
-              type="email"
-              autocomplete="email"
-              :aria-invalid="errors.email ? 'true' : 'false'"
-              aria-describedby="email-error"
-            />
-            <span id="email-error" class="error" role="alert">{{ errors.email }}</span>
-          </div>
-          <div class="field">
-            <label for="phone">Telefon</label>
-            <input
-              id="phone"
-              v-model="form.phone"
-              type="tel"
-              autocomplete="tel"
-              :aria-invalid="errors.phone ? 'true' : 'false'"
-              aria-describedby="phone-error"
-            />
-            <span id="phone-error" class="error" role="alert">{{ errors.phone }}</span>
-          </div>
-          <div class="field">
-            <label for="message">Mesajınız</label>
-            <textarea
-              id="message"
-              v-model="form.message"
-              rows="4"
-              :aria-invalid="errors.message ? 'true' : 'false'"
-              aria-describedby="message-error"
-            />
-            <span id="message-error" class="error" role="alert">{{ errors.message }}</span>
-          </div>
-          <button type="submit" class="btn btn-primary">Gönder</button>
-        </form>
-        <div class="contact-info">
-          <h2>İletişim Bilgileri</h2>
-          <p><strong>E-posta:</strong> info@golgepsikoloji.com</p>
-          <p><strong>Telefon:</strong> +90 XXX XXX XX XX</p>
-          <p><strong>Adres:</strong> Örnek Mah. Örnek Sok. No: X, İstanbul</p>
-        </div>
-      </div>
+      <p class="contact-note">Tüm görüşmeler gizlilik ve özen çerçevesinde ele alınır.</p>
+    </section>
+
+    <section class="contact-cards">
+      <article class="contact-card">
+        <h2>Telefon</h2>
+        <p class="contact-value">+90 530 655 7698</p>
+      </article>
+      <article class="contact-card">
+        <h2>E-posta</h2>
+        <p class="contact-value">ozdenunsal@gmail.com</p>
+      </article>
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
 
 const root = ref(null)
 useReveal(root)
-
-const form = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  message: '',
-})
-
-const errors = reactive({
-  name: '',
-  email: '',
-  phone: '',
-  message: '',
-})
-
-function validate() {
-  let valid = true
-  errors.name = ''
-  errors.email = ''
-  errors.phone = ''
-  errors.message = ''
-
-  if (!form.name.trim()) {
-    errors.name = 'Ad soyad gereklidir.'
-    valid = false
-  }
-
-  if (!form.email.trim()) {
-    errors.email = 'E-posta gereklidir.'
-    valid = false
-  } else {
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRe.test(form.email)) {
-      errors.email = 'Geçerli bir e-posta adresi girin.'
-      valid = false
-    }
-  }
-
-  if (form.phone && !/^[\d\s+()-]+$/.test(form.phone)) {
-    errors.phone = 'Geçerli bir telefon numarası girin.'
-    valid = false
-  }
-
-  if (!form.message.trim()) {
-    errors.message = 'Mesaj alanı gereklidir.'
-    valid = false
-  }
-
-  return valid
-}
-
-function onSubmit() {
-  if (!validate()) return
-  console.log('Form submitted', form)
-}
 </script>
 
 <style scoped>
 .contact {
-  padding: 2rem 1.5rem 4rem;
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
 }
 
-.contact h1 {
-  margin: 0 0 0.5rem;
+.contact-hero {
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+.contact-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.2rem, 3.2vw, 2.9rem);
+  color: var(--color-heading);
 }
 
 .lead {
-  margin: 0 0 2rem;
-  color: var(--color-text);
-  max-width: 50ch;
+  margin: 0 0 0.75rem;
+  color: var(--color-body);
+  line-height: 1.7;
 }
 
-.contact-layout {
+.contact-note {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.contact-cards {
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-@media (min-width: 720px) {
-  .contact-layout {
-    grid-template-columns: 1fr 300px;
+.contact-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-heading);
+}
+
+.contact-value {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+
+@media (min-width: 768px) {
+  .contact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-sm);
-  background: var(--color-bg);
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.field label {
-  font-weight: 500;
-  color: var(--color-main);
-}
-
-.field input,
-.field textarea {
-  padding: 0.6rem 0.75rem;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-sm);
-  font-family: inherit;
-  font-size: 1rem;
-  background: var(--color-bg);
-  color: var(--color-main);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.field input:focus,
-.field textarea:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-.field input[aria-invalid="true"],
-.field textarea[aria-invalid="true"] {
-  border-color: var(--color-accent);
-}
-
-.error {
-  font-size: 0.875rem;
-  color: var(--color-accent);
-}
-
-.btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  font-size: 1rem;
-  font-family: inherit;
-  background: var(--color-accent);
-  color: var(--color-bg);
-  cursor: pointer;
-  align-self: flex-start;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-normal), transform var(--transition-fast), opacity var(--transition-fast);
-}
-
-.btn:hover {
-  opacity: 0.95;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.contact-info {
-  padding: 1.5rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-sm);
-  background: var(--color-bg);
-}
-
-.contact-info h2 {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-}
-
-.contact-info p {
-  margin: 0 0 0.5rem;
-  color: var(--color-text);
-  font-size: 0.9375rem;
+@media (max-width: 768px) {
+  .contact-hero {
+    margin-bottom: 2.25rem;
+  }
 }
 </style>

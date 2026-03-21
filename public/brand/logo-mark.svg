@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <defs>
+    <path
+      id="core-shape"
+      d="M18 30
+         C20 18 34 12 48 14
+         C64 16 78 28 80 44
+         C82 60 72 76 56 82
+         C40 88 22 82 16 68
+         C10 54 12 40 18 30 Z"
+    />
+  </defs>
+  <g>
+    <use href="#core-shape" fill="#F3EFEA" />
+    <use
+      href="#core-shape"
+      fill="#6B635D"
+      transform="translate(6 8) scale(0.78)"
+      transform-origin="48px 48px"
+    />
+  </g>
+</svg>

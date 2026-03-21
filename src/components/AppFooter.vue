@@ -1,114 +1,190 @@
 <template>
   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <TheLogo />
+    <SpiralWatermark class="footer-watermark" aria-hidden="true" />
+    <UiContainer class="footer-inner">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <SpiralLogo class="footer-mark" :size="28" />
+          <p class="footer-title">Gölge Psikoloji</p>
+          <p class="footer-tagline">
+            İç dünyanızda güven ve sakinlik için yanınızdayım.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Sayfalar</h3>
+          <nav class="footer-nav" aria-label="Alt menü">
+            <router-link to="/">Ana Sayfa</router-link>
+            <router-link to="/hakkimda">Hakkımda</router-link>
+            <router-link to="/hizmetler">Hizmetler</router-link>
+            <router-link to="/blog">Blog</router-link>
+            <router-link to="/iletisim">İletişim</router-link>
+          </nav>
+        </div>
+        <div class="footer-contact">
+          <h3>İletişim</h3>
+          <p>info@golgepsikoloji.com</p>
+          <p>+90 XXX XXX XX XX</p>
+        </div>
       </div>
-      <nav class="footer-nav" aria-label="Alt menü">
-        <router-link to="/">Ana Sayfa</router-link>
-        <router-link to="/hakkimda">Hakkımda</router-link>
-        <router-link to="/hizmetler">Hizmetler</router-link>
-        <router-link to="/blog">Blog</router-link>
-        <router-link to="/iletisim">İletişim</router-link>
-      </nav>
-      <p class="footer-contact">
-        info@golgepsikoloji.com · +90 XXX XXX XX XX
-      </p>
-      <p class="footer-copy">
-        &copy; {{ year }} Gölge Psikoloji. Tüm hakları saklıdır.
-      </p>
-    </div>
+      <div class="footer-legal">
+        <p class="footer-copy">© 2026 Gölge Psikoloji</p>
+      </div>
+    </UiContainer>
   </footer>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import TheLogo from './TheLogo.vue'
-
-const year = computed(() => new Date().getFullYear())
+import UiContainer from './ui/UiContainer.vue'
+import SpiralLogo from './SpiralLogo.vue'
+import SpiralWatermark from './SpiralWatermark.vue'
 </script>
 
 <style scoped>
 .footer {
-  background: var(--color-main);
-  color: var(--color-bg);
+  position: relative;
+  background: #EFE8E1;
+  color: var(--color-main);
   margin-top: auto;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+  border-top: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: clamp(2rem, 5vw, 3rem) 1.5rem;
-  display: grid;
-  gap: 1.5rem;
+  padding: clamp(4rem, 6vw, 5rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-@media (min-width: 640px) {
-  .footer-inner {
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
+.footer-main {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 960px) {
+  .footer-main {
+    grid-template-columns: 1.4fr 1fr 1fr;
     align-items: start;
   }
-
-  .footer-nav {
-    grid-column: 2;
-    grid-row: 1 / -1;
-  }
-
-  .footer-contact {
-    grid-column: 3;
-  }
-
-  .footer-copy {
-    grid-column: 1 / -1;
-  }
 }
 
-.footer-brand :deep(.logo) {
-  color: var(--color-bg);
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 38ch;
 }
 
-.footer-brand :deep(.logo-brand),
-.footer-brand :deep(.logo-sub) {
-  color: var(--color-bg);
-  opacity: 0.8;
-}
-
-.footer-brand :deep(.spiral-main) {
-  color: var(--color-bg);
-}
-
-.footer-brand :deep(.spiral-accent) {
-  color: var(--color-accent);
+.footer-links h3,
+.footer-contact h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-main);
 }
 
 .footer-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.footer-nav a {
-  color: var(--color-bg);
-  opacity: 0.9;
-  transition: opacity var(--transition-fast);
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.footer-nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-.footer-contact,
-.footer-copy {
+.footer-title {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-main);
+  letter-spacing: 0.02em;
+}
+
+.footer-mark {
+  display: inline-flex;
   opacity: 0.85;
 }
 
+.footer-tagline {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-contact p,
+.footer-nav a {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.footer-nav a {
+  position: relative;
+  width: fit-content;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.5;
+  transition: width var(--transition-fast);
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.footer-nav a:hover::after,
+.footer-nav a:focus-visible::after {
+  width: 100%;
+}
+
+.footer-legal {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.25rem;
+  text-align: center;
+}
+
 .footer-copy {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(244, 241, 237, 0.2);
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.footer-watermark {
+  position: absolute;
+  right: -40px;
+  bottom: -60px;
+  width: clamp(180px, 22vw, 260px);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .footer-main {
+    text-align: center;
+    justify-items: center;
+  }
+
+  .footer-nav a {
+    width: auto;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
 }
 </style>

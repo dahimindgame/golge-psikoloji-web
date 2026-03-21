@@ -1,6 +1,7 @@
 <template>
   <div ref="root" class="services page-wrap">
     <section class="section">
+      <SpiralWatermark class="section-watermark" aria-hidden="true" />
       <h1>Hizmetler</h1>
       <p class="lead">
         Bireysel ihtiyaçlarınıza uygun terapi ve danışmanlık hizmetleri sunuyorum.
@@ -49,6 +50,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
+import SpiralWatermark from '../components/SpiralWatermark.vue'
 
 const root = ref(null)
 useReveal(root)
@@ -114,13 +116,26 @@ const services = [
 }
 
 .service-card {
+  position: relative;
   padding: 1.5rem;
   margin-bottom: 1rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
-  background: var(--color-bg);
-  transition: box-shadow var(--transition-normal), transform var(--transition-fast);
+  background: var(--color-card);
+  overflow: hidden;
+  transition: box-shadow var(--transition-normal), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-accent-secondary);
+  opacity: 0.14;
 }
 
 .service-card:last-child {
@@ -129,6 +144,8 @@ const services = [
 
 .service-card:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-border);
 }
 
 .service-body[hidden] {
@@ -165,12 +182,14 @@ const services = [
   font-weight: 500;
   color: var(--color-accent);
   cursor: pointer;
-  transition: color var(--transition-fast), opacity var(--transition-fast);
+  position: relative;
+  transition: color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .read-more:hover {
   text-decoration: underline;
   opacity: 0.9;
+  transform: translateX(1px);
 }
 
 .arrow {

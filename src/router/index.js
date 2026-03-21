@@ -20,6 +20,12 @@ const routes = [
     meta: { title: 'Hizmetler' },
   },
   {
+    path: '/hizmetler/cocuk-danismanligi',
+    name: 'cocuk-danismanligi',
+    component: () => import('../views/services/ChildCounselingView.vue'),
+    meta: { title: 'Çocuk Danışmanlığı | Gölge Psikoloji' },
+  },
+  {
     path: '/blog',
     name: 'blog',
     component: () => import('../views/BlogView.vue'),
@@ -30,6 +36,12 @@ const routes = [
     name: 'contact',
     component: () => import('../views/ContactView.vue'),
     meta: { title: 'İletişim' },
+  },
+  {
+    path: '/randevu-olustur',
+    name: 'appointment',
+    component: () => import('../views/AppointmentView.vue'),
+    meta: { title: 'Randevu Oluştur' },
   },
 ]
 

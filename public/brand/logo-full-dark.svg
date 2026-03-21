@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" fill="none">
+  <defs>
+    <linearGradient id="markAccentDark" x1="0" y1="0" x2="96" y2="96">
+      <stop offset="0" stop-color="#F4F1ED" />
+      <stop offset="1" stop-color="#B06A3C" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M48 10 C30 10 18 24 18 38 C18 58 38 72 58 66 C76 60 82 40 68 28 C58 19 42 20 34 30 C28 38 30 50 42 52 C52 53 58 44 54 38 C51 34 44 33 42 38"
+    stroke="url(#markAccentDark)"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M54 18 C66 22 72 34 68 44 C64 56 52 60 42 56"
+    stroke="#F4F1ED"
+    stroke-opacity="0.35"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <text x="110" y="56" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="26" font-weight="600" fill="#F4F1ED">
+    Gölge Psikoloji
+  </text>
+</svg>

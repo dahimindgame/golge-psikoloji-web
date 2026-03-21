@@ -1,38 +1,35 @@
 <template>
-  <router-link to="/" class="logo" aria-label="Gölge Psikoloji ana sayfa">
-    <svg class="logo-spiral" viewBox="0 0 48 48" aria-hidden="true">
-      <path
-        class="spiral-main"
-        d="M24 4 A20 20 0 0 1 44 24 A20 20 0 0 1 24 44 A20 20 0 0 1 4 24 A20 20 0 0 1 24 4"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-linecap="round"
-      />
-      <path
-        class="spiral-accent"
-        d="M24 4 A20 20 0 0 1 44 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-linecap="round"
-      />
-    </svg>
-    <span class="logo-text">
-      <span class="logo-brand">GÖLGE</span>
-      <span class="logo-sub">PSİKOLOJİ</span>
-    </span>
+  <router-link
+    to="/"
+    class="logo"
+    aria-label="Gölge Psikoloji ana sayfa"
+    :style="{ '--logo-size': sizeStyle }"
+  >
+    <SpiralLogo class="logo-img" :size="sizeStyle" />
+    <span class="logo-text logo-text--full">Gölge Psikoloji</span>
+    <span class="logo-text logo-text--short">Gölge</span>
   </router-link>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import SpiralLogo from './SpiralLogo.vue'
+
+const props = defineProps({
+  size: {
+    type: [Number, String],
+    default: 40,
+  },
+})
+
+const sizeStyle = computed(() => (typeof props.size === 'number' ? `${props.size}px` : props.size))
 </script>
 
 <style scoped>
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   text-decoration: none;
   color: var(--color-main);
 }
@@ -41,37 +38,38 @@
   text-decoration: none;
 }
 
-.logo-spiral {
-  width: 2.5rem;
-  height: 2.5rem;
+.logo-img {
   flex-shrink: 0;
-}
-
-.spiral-main {
-  color: var(--color-main);
-}
-
-.spiral-accent {
-  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
 }
 
 .logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--color-heading);
+  white-space: nowrap;
 }
 
-.logo-brand {
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.02em;
-  color: var(--color-main);
+.logo-text--short {
+  display: none;
 }
 
-.logo-sub {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--color-accent-secondary);
+@media (max-width: 768px) {
+  .logo-text--full {
+    display: none;
+  }
+
+  .logo-text--short {
+    display: inline;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    height: 28px;
+  }
 }
 </style>

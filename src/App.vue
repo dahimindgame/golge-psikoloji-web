@@ -2,9 +2,9 @@
   <div class="app">
     <AppHeader />
     <main class="main">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
+      <router-view v-slot="{ Component, route }">
+        <transition name="page-fade" mode="out-in">
+          <component :is="Component" :key="route.fullPath" />
         </transition>
       </router-view>
     </main>
@@ -29,12 +29,24 @@ import AppFooter from './components/AppFooter.vue'
   flex: 1;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
+.page-fade-enter-from {
   opacity: 0;
+  transform: translateY(12px);
+}
+.page-fade-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-fade-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
 }
 </style>
