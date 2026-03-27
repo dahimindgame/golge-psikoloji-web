@@ -54,9 +54,9 @@
           />
           <h3>Ergen Danışmanlığı</h3>
           <p>Kimlik, duygular ve sınırlar üzerine güvenli bir ilişki zemini.</p>
-          <span class="service-action">Detayları Gör →</span>
+          <router-link to="/hizmetler/ergen-danismanligi" class="service-action">Detayları Gör →</router-link>
         </article>
-        <article class="service-card">
+        <router-link to="/hizmetler/bireysel-danismanlik" class="service-card">
           <img
             :src="serviceAdult"
             width="56"
@@ -68,8 +68,8 @@
           <h3>Bireysel Danışmanlık</h3>
           <p>Kaygı, ilişkiler ve yaşam döngülerine yönelik derinlikli çalışma.</p>
           <span class="service-action">Detayları Gör →</span>
-        </article>
-        <article class="service-card">
+        </router-link>
+        <router-link to="/hizmetler/cift-evlilik-terapisi" class="service-card">
           <img
             :src="serviceCouple"
             width="56"
@@ -81,7 +81,7 @@
           <h3>Çift &amp; Evlilik Terapisi</h3>
           <p>Bağlanma örüntüleri ve iletişim döngülerine odaklanan rehberlik.</p>
           <span class="service-action">Detayları Gör →</span>
-        </article>
+        </router-link>
       </div>
     </section>
   </div>
@@ -100,6 +100,7 @@ import serviceCouple from '../assets/services/cift.jpeg'
 
 const root = ref(null)
 useReveal(root)
+
 </script>
 
 <style scoped>
@@ -358,6 +359,8 @@ useReveal(root)
 
 .service-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 1.5rem;
   border-radius: var(--radius-card);
   background:

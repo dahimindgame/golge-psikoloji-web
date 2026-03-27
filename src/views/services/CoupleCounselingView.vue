@@ -5,12 +5,15 @@
         <div class="cc-hero__grid">
           <div class="cc-hero__content">
             <p class="cc-hero__eyebrow">Hizmet Alanı</p>
-            <h1>Çocuklarla Çalışma / Çocuk Danışmanlığı</h1>
+            <h1>Çift &amp; Evlilik Terapisi / Çiftlerle Çalışma</h1>
             <p class="cc-hero__lead">
-              Çocuklar yaşadıkları duyguları çoğu zaman yetişkinler gibi kelimelerle ifade edemezler. Bu nedenle çocuk terapisinde oyun, resim, hikâye ve yaratıcı yöntemler önemli bir yer tutar.
+              İlişkiler zaman zaman zorlayıcı dönemlerden geçebilir. Çoğu çift, yaşadığı sorunların yalnızca iletişim eksikliğinden kaynaklandığını düşünse de, çoğu zaman ilişkinin içinde tekrar eden duygusal döngüler bu sorunların temelini oluşturur.
             </p>
             <p class="cc-hero__note">
-              Oyun, çocuğun dünyasını anlamanın ve duygularını ifade edebilmesinin en doğal yollarından biridir.
+              Bazen partnerlerden biri kendini anlaşılmamış hissederken diğeri sürekli eleştirildiğini düşünebilir. Bazen de tartışmalar aynı konular etrafında tekrar eder ve çiftler birbirine nasıl ulaşacaklarını bilemez hale gelir.
+            </p>
+            <p class="cc-hero__note">
+              Çift terapisi, ilişkinin içinde ortaya çıkan bu döngüleri fark etmek ve onları daha sağlıklı bir iletişim biçimine dönüştürmek için bir alan sunar.
             </p>
             <div class="cc-hero__actions">
               <router-link :to="appointmentLink" class="cc-btn cc-btn--primary">Randevu Talebi Oluştur</router-link>
@@ -18,8 +21,8 @@
             </div>
           </div>
           <div class="cc-hero__media">
-            <div class="cc-hero__frame">
-              <img src="/assets/services/cocuk-danismanligi-hero.png" alt="Çocuk danışmanlığında güvenli alan" loading="eager" />
+            <div class="cc-hero__frame cc-hero__frame--couple">
+              <img src="/assets/services/cift-evlilik-terapisi-hero.png" alt="Çift terapisi için güvenli alan" loading="eager" />
             </div>
           </div>
         </div>
@@ -31,89 +34,76 @@
         <div class="cc-flow">
           <div class="cc-flow__block">
             <p class="cc-eyebrow">Yaklaşım</p>
-            <h2>Çocuklarla Çalışma Yaklaşımı</h2>
+            <h2>Çift Terapisi Yaklaşımı</h2>
             <p>
-              Terapi sürecinde amaç yalnızca görünen davranışı değiştirmek değil; davranışın arkasındaki duygusal ihtiyaçları anlamaktır. Bazen bir öfke patlamasının, bazen de içe kapanmanın altında anlaşılma, görülme ya da güven ihtiyacı bulunabilir.
+              Terapi sürecinde amaç kimin haklı olduğunu belirlemek değil; her iki tarafın da duyulabildiği, anlaşılabildiği ve duygularını güvenli bir şekilde ifade edebildiği bir ilişki alanı oluşturmaktır.
+            </p>
+            <p class="cc-flow__intro">Bu süreçte birlikte:</p>
+            <ul class="cc-flow__list cc-flow__list--grid">
+              <li>İlişkide tekrar eden çatışma döngülerini fark etmeyi</li>
+              <li>İletişim biçimlerini daha sağlıklı hale getirmeyi</li>
+              <li>Duyguları daha açık ve yapıcı şekilde ifade etmeyi</li>
+              <li>Empati ve karşılıklı anlayışı güçlendirmeyi</li>
+              <li>Güven ve yakınlık duygusunu yeniden inşa etmeyi</li>
+            </ul>
+            <p>
+              Çift terapisi yalnızca kriz anlarında başvurulan bir süreç değildir. Bazen çiftler ilişkilerini daha iyi anlamak, bağlarını güçlendirmek ve sağlıklı bir iletişim kurmak için de terapi desteği alabilirler.
             </p>
             <p class="cc-flow__accent">
-              Çocuklarla yapılan çalışmalarda, çocuğun kendini güvende hissettiği ve duygularını rahatça ifade edebildiği bir alan oluşturmak önemlidir. Bu güvenli alan içinde çocuk duygularını keşfetmeyi, onları ifade etmeyi ve düzenlemeyi öğrenir.
-            </p>
-          </div>
-
-          <div class="cc-flow__block">
-            <p class="cc-eyebrow">Süreç</p>
-            <h2>Süreç Nasıl İlerler?</h2>
-            <p class="cc-flow__intro">Terapi sürecinde çocuklarla birlikte:</p>
-            <ul class="cc-flow__list">
-              <li>Duyguları tanıma ve ifade etme</li>
-              <li>Öfke ve kaygıyla baş etme</li>
-              <li>Sosyal becerileri geliştirme</li>
-              <li>Özgüveni destekleme</li>
-              <li>Problem çözme becerileri geliştirme</li>
-            </ul>
-            <p class="cc-flow__after">üzerinde çalışılır.</p>
-          </div>
-
-          <div class="cc-flow__block">
-            <p class="cc-eyebrow">Aile</p>
-            <h2>Aile ile İş Birliği</h2>
-            <p>
-              Çocuk terapisinde aile sürecin önemli bir parçasıdır. Bu nedenle ebeveynlerle yapılan görüşmeler, çocuğun ihtiyaçlarını daha iyi anlamaya ve ev ortamında destekleyici bir yaklaşım oluşturulmasına yardımcı olur.
-            </p>
-            <p>
-              Amaç yalnızca davranışı değiştirmek değil, çocuğun kendini güvende ve anlaşılmış hissettiği bir duygusal alan oluşturmaktır.
+              Amaç ilişkinin içinde daha güvenli, daha açık ve daha dengeli bir bağ kurabilmektir.
             </p>
           </div>
 
           <div class="cc-flow__block cc-flow__support">
             <p class="cc-eyebrow">Destek Alanları</p>
-            <h2>Çocuk terapisine hangi durumlarda başvurulabilir?</h2>
-            <div class="cc-flow__grid">
+            <h2>Çift terapisine hangi durumlarda başvurulabilir?</h2>
+            <div class="cc-flow__grid cc-flow__grid--dense">
               <div>
-                <h3>Duygusal zorluklar:</h3>
+                <h3>İletişim sorunları:</h3>
                 <ul>
-                  <li>Kaygı ve korkular</li>
-                  <li>Ayrılık kaygısı</li>
-                  <li>Öfke patlamaları</li>
-                  <li>İçine kapanma</li>
-                  <li>Özgüven sorunları</li>
+                  <li>Sürekli tekrar eden tartışmalar</li>
+                  <li>Birbirini anlamakta zorlanma</li>
+                  <li>İletişimde eleştiri, savunma veya uzaklaşma döngüleri</li>
                 </ul>
               </div>
               <div>
-                <h3>Davranışsal zorluklar:</h3>
+                <h3>İlişkisel zorluklar:</h3>
                 <ul>
-                  <li>Tırnak yeme</li>
-                  <li>Alt ıslatma / kaka kaçırma</li>
-                  <li>Parmak emme</li>
-                  <li>Tik benzeri davranışlar</li>
+                  <li>Güven sorunları</li>
+                  <li>Aldatma sonrası ilişkiyi onarma süreci</li>
+                  <li>Duygusal uzaklaşma</li>
+                  <li>Yakınlık ve bağ kurma güçlükleri</li>
                 </ul>
               </div>
               <div>
-                <h3>Okul ve sosyal alan:</h3>
+                <h3>Yaşam süreçleri:</h3>
                 <ul>
-                  <li>Okula uyum sorunları</li>
-                  <li>Arkadaş ilişkilerinde zorluk</li>
-                  <li>Akran zorbalığı</li>
-                  <li>Derslere odaklanma güçlüğü</li>
+                  <li>Evlilik öncesi ilişkiyi değerlendirme</li>
+                  <li>Evlilik veya birlikte yaşama sürecine uyum</li>
+                  <li>Çocuk sahibi olduktan sonra ilişkide yaşanan değişimler</li>
+                  <li>İş, taşınma veya yaşam değişikliklerinin ilişkiye etkileri</li>
                 </ul>
               </div>
               <div>
-                <h3>Yaşam olayları:</h3>
+                <h3>Duygusal ihtiyaçlar:</h3>
                 <ul>
-                  <li>Boşanma süreci</li>
-                  <li>Taşınma veya okul değişimi</li>
-                  <li>Kardeş doğumu</li>
-                  <li>Kayıp ve yas süreçleri</li>
+                  <li>Görülme ve anlaşılma ihtiyacı</li>
+                  <li>İlişkide yalnız hissetme</li>
+                  <li>Partnerle duygusal bağın zayıflaması</li>
                 </ul>
               </div>
             </div>
+
+            <p class="cc-flow__after">
+              İlişkilerde yaşanan zorluklar çoğu zaman yalnızca bir sorundan değil, anlaşılmayı bekleyen duygusal ihtiyaçlardan kaynaklanır. Çift terapisi bu ihtiyaçları birlikte keşfetmek için güvenli bir alan sunar.
+            </p>
           </div>
 
           <div class="cc-flow__block cc-flow__cta">
             <p class="cc-flow__cta-copy">
-              Çocuğunuzun davranışında sizi düşündüren bir değişim fark ediyorsanız, bunu anlamak ve destek almak için terapi süreci yardımcı olabilir.
+              İlişkinizde sizi düşündüren bir değişim fark ediyorsanız, bunu anlamak ve destek almak için terapi süreci yardımcı olabilir.
             </p>
-            <h2>Çocuğunuz için güvenli bir alan oluşturmak için iletişime geçebilirsiniz.</h2>
+            <h2>Çift olarak güvenli bir iletişim alanı kurmak için iletişime geçebilirsiniz.</h2>
             <div class="cc-hero__actions">
               <router-link to="/iletisim" class="cc-btn cc-btn--ghost">İletişime Geç</router-link>
               <router-link :to="appointmentLink" class="cc-btn cc-btn--primary">Randevu Talebi Oluştur</router-link>
@@ -129,7 +119,7 @@
 import UiContainer from '../../components/ui/UiContainer.vue'
 const appointmentLink = {
   path: '/randevu-olustur',
-  query: { service: 'Çocuk Danışmanlığı' },
+  query: { service: 'Çift & Evlilik Terapisi' },
 }
 </script>
 
@@ -144,7 +134,7 @@ const appointmentLink = {
   overflow: hidden;
   padding: clamp(72px, 10vh, 112px) 0 clamp(36px, 6vh, 56px);
   background:
-    radial-gradient(120% 120% at 85% 5%, rgba(255, 240, 236, 0.8) 0%, rgba(252, 247, 245, 0.9) 55%, rgba(247, 242, 239, 0.95) 100%),
+    radial-gradient(120% 120% at 85% 5%, rgba(249, 240, 232, 0.85) 0%, rgba(252, 248, 245, 0.92) 55%, rgba(247, 243, 239, 0.96) 100%),
     linear-gradient(180deg, #ffffff 0%, #f7f2ef 100%);
 }
 
@@ -164,8 +154,8 @@ const appointmentLink = {
   width: clamp(180px, 24vw, 300px);
   height: clamp(180px, 24vw, 300px);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, rgba(255, 171, 152, 0.35), rgba(255, 214, 200, 0.2) 60%, transparent 70%);
-  opacity: 0.55;
+  background: radial-gradient(circle at 35% 35%, rgba(189, 140, 96, 0.35), rgba(219, 190, 165, 0.2) 60%, transparent 70%);
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -253,16 +243,16 @@ const appointmentLink = {
   position: relative;
   border-radius: clamp(22px, 2.6vw, 30px);
   overflow: hidden;
-  background: #fff7f4;
+  background: #f6f0ea;
   box-shadow:
     0 22px 44px rgba(91, 60, 55, 0.16),
     0 8px 16px rgba(91, 60, 55, 0.1);
   min-height: clamp(260px, 32vw, 420px);
-  max-width: 480px;
+  max-width: 460px;
   width: 100%;
 }
 
-.cc-hero__frame::before {
+.cc-hero__frame--couple::before {
   content: '';
   position: absolute;
   inset: 10px;
@@ -277,7 +267,7 @@ const appointmentLink = {
   height: 100%;
   object-fit: cover;
   transform: scale(1.02);
-  filter: saturate(1.05);
+  filter: saturate(1.04);
 }
 
 .cc-body {
@@ -293,7 +283,7 @@ const appointmentLink = {
   width: clamp(200px, 26vw, 360px);
   height: clamp(200px, 26vw, 360px);
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 181, 170, 0.2), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(192, 150, 110, 0.18), transparent 70%);
   pointer-events: none;
 }
 
@@ -321,7 +311,7 @@ const appointmentLink = {
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(211, 125, 108, 0.9);
+  color: rgba(156, 118, 96, 0.9);
 }
 
 .cc-flow__block p {
@@ -332,7 +322,7 @@ const appointmentLink = {
 
 .cc-flow__accent {
   padding-left: 12px;
-  border-left: 2px solid rgba(229, 156, 138, 0.35);
+  border-left: 2px solid rgba(182, 138, 116, 0.35);
 }
 
 .cc-flow__intro {
@@ -346,6 +336,11 @@ const appointmentLink = {
   line-height: 1.68;
 }
 
+.cc-flow__list--grid {
+  display: grid;
+  gap: 6px 18px;
+}
+
 .cc-flow__after {
   margin: 0;
   color: var(--color-body);
@@ -356,7 +351,7 @@ const appointmentLink = {
   gap: 16px;
 }
 
-.cc-flow__grid ul {
+.cc-flow__grid--dense ul {
   margin: 0;
   padding-left: 1.05rem;
   line-height: 1.65;
@@ -384,8 +379,18 @@ const appointmentLink = {
     order: 0;
   }
 
+  .cc-flow__list--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cc-flow__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .cc-flow__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -396,7 +401,7 @@ const appointmentLink = {
 
   .cc-hero__frame {
     min-height: 220px;
-    max-width: 360px;
+    max-width: 340px;
   }
 
   .cc-hero__actions,

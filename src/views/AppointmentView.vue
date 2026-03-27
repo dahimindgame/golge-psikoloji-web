@@ -146,8 +146,11 @@
           </label>
           <span v-if="errors.consent" class="error">{{ errors.consent }}</span>
 
-          <button type="submit" class="appointment-submit">
-            WhatsApp ile Talep Gönder
+          <div v-if="submitStatus" class="submit-status" :class="`submit-status--${submitStatus}`">
+            {{ submitMessage }}
+          </div>
+          <button type="submit" class="appointment-submit" :disabled="isSubmitting">
+            {{ isSubmitting ? 'Gönderiliyor...' : 'Talebi Gönder' }}
           </button>
           <router-link class="appointment-alt" to="/iletisim">
             Alternatif olarak iletişim sayfasını kullanabilirsiniz.
@@ -170,13 +173,16 @@
 </template>
 
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useReveal } from '../composables/useReveal'
-
-const WHATSAPP_NUMBER = '905306557698'
+import { contactConfig } from '../config/contact'
+import { createAppointmentWhatsappMessage, createWhatsappUrl } from '../utils/whatsapp'
 
 const root = ref(null)
 useReveal(root)
+
+const route = useRoute()
 
 const form = reactive({
   fullName: '',
@@ -199,6 +205,10 @@ const errors = reactive({
   consent: '',
 })
 
+const isSubmitting = ref(false)
+const submitStatus = ref('')
+const submitMessage = ref('')
+
 const timeOptions = ['09:00 – 12:00', '12:00 – 15:00', '15:00 – 18:00', '18:00 – 21:00']
 const selectedDates = reactive([])
 const selectedTimes = reactive([])
@@ -208,6 +218,16 @@ const weekdayLabels = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
 const today = new Date()
 const currentMonth = ref(today.getMonth())
 const currentYear = ref(today.getFullYear())
+
+watch(
+  () => route.query.service,
+  (value) => {
+    if (value && !form.supportTopic) {
+      form.supportTopic = String(value)
+    }
+  },
+  { immediate: true }
+)
 
 const monthLabel = computed(() => {
   const date = new Date(currentYear.value, currentMonth.value, 1)
@@ -299,35 +319,77 @@ function setErrors() {
   errors.consent = form.consent ? '' : 'İletişim izni gereklidir.'
 }
 
-function formatValue(value) {
-  return value ? value : 'Belirtilmedi'
+function resetStatus() {
+  submitStatus.value = ''
+  submitMessage.value = ''
 }
 
-function buildMessage() {
-  return `Merhaba, randevu talebi oluşturmak istiyorum.
-
-Ad Soyad: ${formatValue(form.fullName)}
-Telefon: ${formatValue(form.phone)}
-E-posta: ${formatValue(form.email)}
-Görüşme Türü: ${formatValue(form.meetingType)}
-Uygun Gün Aralığı: ${formatValue(form.dayRange)}
-Uygun Saat Aralığı: ${formatValue(form.timeRange)}
-Destek Konusu: ${formatValue(form.supportTopic)}
-Mesaj: ${formatValue(form.message)}
-
-Teşekkür ederim.`
+function resetForm() {
+  form.fullName = ''
+  form.phone = ''
+  form.email = ''
+  form.meetingType = ''
+  form.dayRange = ''
+  form.timeRange = ''
+  form.supportTopic = ''
+  form.message = ''
+  form.consent = false
+  selectedDates.splice(0, selectedDates.length)
+  selectedTimes.splice(0, selectedTimes.length)
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   setErrors()
   if (errors.fullName || errors.phone || errors.meetingType || errors.supportTopic || errors.email || errors.consent) {
     return
   }
 
-  const message = buildMessage()
-  const sanitizedNumber = WHATSAPP_NUMBER.replace(/\D/g, '')
-  const url = `https://wa.me/${sanitizedNumber}?text=${encodeURIComponent(message)}`
-  window.location.href = url
+  if (isSubmitting.value) {
+    return
+  }
+
+  resetStatus()
+  isSubmitting.value = true
+
+  try {
+    if (!contactConfig.whatsapp?.enabled || !contactConfig.whatsapp?.number) {
+      submitStatus.value = 'error'
+      submitMessage.value = 'WhatsApp iletişim bilgisi şu anda tanımlı değil.'
+      return
+    }
+
+    const message = createAppointmentWhatsappMessage({
+      fullName: form.fullName,
+      phone: form.phone,
+      email: form.email,
+      service: form.supportTopic,
+      preferredDate: form.dayRange,
+      preferredTime: form.timeRange,
+      message: form.message,
+    })
+
+    const whatsappUrl = createWhatsappUrl(
+      message,
+      contactConfig.whatsapp.number,
+      contactConfig.whatsapp.defaultCountryCode
+    )
+
+    if (!whatsappUrl) {
+      submitStatus.value = 'error'
+      submitMessage.value = 'WhatsApp iletişim bilgisi şu anda tanımlı değil.'
+      return
+    }
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+    submitStatus.value = 'success'
+    submitMessage.value = 'WhatsApp açıldı. Mesajınızı gönderebilirsiniz.'
+    resetForm()
+  } catch (error) {
+    submitStatus.value = 'error'
+    submitMessage.value = 'Mesaj gönderilirken bir sorun oluştu. Lütfen tekrar deneyin.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -610,6 +672,33 @@ textarea {
     inset 0 -1px 0 rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.appointment-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+.submit-status {
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border: 1px solid transparent;
+}
+
+.submit-status--success {
+  background: rgba(232, 244, 236, 0.9);
+  border-color: rgba(105, 156, 120, 0.3);
+  color: #2c6040;
+}
+
+.submit-status--error {
+  background: rgba(255, 236, 236, 0.9);
+  border-color: rgba(188, 100, 100, 0.3);
+  color: #7a2f2f;
 }
 
 .appointment-submit:hover {

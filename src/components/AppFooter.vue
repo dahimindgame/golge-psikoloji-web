@@ -22,8 +22,8 @@
         </div>
         <div class="footer-contact">
           <h3>İletişim</h3>
-          <p>info@golgepsikoloji.com</p>
-          <p>+90 XXX XXX XX XX</p>
+          <a v-if="contactInfo.email" :href="`mailto:${contactInfo.email}`">{{ contactInfo.email }}</a>
+          <a v-if="contactInfo.phone" :href="phoneHref">{{ contactInfo.phone }}</a>
         </div>
       </div>
       <div class="footer-legal">
@@ -37,6 +37,10 @@
 import UiContainer from './ui/UiContainer.vue'
 import SpiralLogo from './SpiralLogo.vue'
 import SpiralWatermark from './SpiralWatermark.vue'
+import { contactConfig } from '../config/contact'
+
+const contactInfo = contactConfig
+const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '')}` : ''
 </script>
 
 <style scoped>
@@ -91,7 +95,7 @@ import SpiralWatermark from './SpiralWatermark.vue'
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .footer-title {
@@ -114,11 +118,23 @@ import SpiralWatermark from './SpiralWatermark.vue'
   line-height: 1.6;
 }
 
-.footer-contact p,
+.footer-contact a,
 .footer-nav a {
   margin: 0;
   font-size: 0.95rem;
   color: var(--color-muted);
+}
+
+.footer-contact a {
+  text-decoration: none;
+  opacity: 0.75;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 .footer-nav a {

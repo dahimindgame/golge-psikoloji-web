@@ -5,12 +5,15 @@
         <div class="cc-hero__grid">
           <div class="cc-hero__content">
             <p class="cc-hero__eyebrow">Hizmet Alanı</p>
-            <h1>Çocuklarla Çalışma / Çocuk Danışmanlığı</h1>
+            <h1>Bireysel Danışmanlık / Yetişkinlerle Çalışma</h1>
             <p class="cc-hero__lead">
-              Çocuklar yaşadıkları duyguları çoğu zaman yetişkinler gibi kelimelerle ifade edemezler. Bu nedenle çocuk terapisinde oyun, resim, hikâye ve yaratıcı yöntemler önemli bir yer tutar.
+              Yetişkinlerle terapi sürecinde amacım, kişinin yaşadığı zorlukları yalnızca semptom düzeyinde ele almak değil; onları yaşam öyküsü ve içsel dünyası içinde anlamlandırabilmesine alan açmaktır.
             </p>
             <p class="cc-hero__note">
-              Oyun, çocuğun dünyasını anlamanın ve duygularını ifade edebilmesinin en doğal yollarından biridir.
+              Kaygı, depresyon, panik atak, obsesif düşünceler, ilişki sorunları, değersizlik duyguları, sınır koymakta zorlanma, öfke, tükenmişlik ya da yaşam geçişleri gibi pek çok deneyim; çoğu zaman kişinin kendisiyle ve başkalarıyla kurduğu ilişki biçimleriyle bağlantılıdır.
+            </p>
+            <p class="cc-hero__note">
+              Bazen kişi kendini sürekli endişeli hisseder, bazen zihni durmadan aynı düşünceler etrafında döner. Kimi zaman da kişi neyin yanlış olduğunu tam olarak adlandıramasa da içinde taşıdığı bir sıkışmışlık ya da yorgunluk hisseder.
             </p>
             <div class="cc-hero__actions">
               <router-link :to="appointmentLink" class="cc-btn cc-btn--primary">Randevu Talebi Oluştur</router-link>
@@ -18,8 +21,8 @@
             </div>
           </div>
           <div class="cc-hero__media">
-            <div class="cc-hero__frame">
-              <img src="/assets/services/cocuk-danismanligi-hero.png" alt="Çocuk danışmanlığında güvenli alan" loading="eager" />
+            <div class="cc-hero__frame cc-hero__frame--adult">
+              <img src="/assets/services/bireysel-danismanlik-hero.png" alt="Bireysel danışmanlık için güvenli alan" loading="eager" />
             </div>
           </div>
         </div>
@@ -30,90 +33,96 @@
       <UiContainer>
         <div class="cc-flow">
           <div class="cc-flow__block">
-            <p class="cc-eyebrow">Yaklaşım</p>
-            <h2>Çocuklarla Çalışma Yaklaşımı</h2>
+            <p class="cc-eyebrow">Süreç</p>
+            <h2>Terapi sürecinde birlikte</h2>
+            <p class="cc-flow__intro">Terapi sürecinde birlikte:</p>
+            <ul class="cc-flow__list cc-flow__list--grid">
+              <li>Düşünce, duygu ve davranış döngülerini fark etmeyi</li>
+              <li>Kaygı ve stresle baş etme yollarını geliştirmeyi</li>
+              <li>Otomatik düşünceleri ve temel inançları sorgulamayı</li>
+              <li>Zorlayıcı içsel sesleri tanımayı</li>
+              <li>Sağlıklı sınırlar geliştirmeyi</li>
+              <li>Duygularla temas kurmayı ve onları düzenlemeyi</li>
+              <li>Kişinin kendi ihtiyaçlarını daha net duyabilmesini</li>
+            </ul>
             <p>
-              Terapi sürecinde amaç yalnızca görünen davranışı değiştirmek değil; davranışın arkasındaki duygusal ihtiyaçları anlamaktır. Bazen bir öfke patlamasının, bazen de içe kapanmanın altında anlaşılma, görülme ya da güven ihtiyacı bulunabilir.
+              Bilişsel Davranışçı Terapi temelli çalışırken, aynı zamanda kişinin iç dünyasına, geçmiş deneyimlerine ve bugününü şekillendiren ilişki örüntülerine de alan açarım.
+            </p>
+            <p>
+              Terapi benim için, kişinin kendini savunmak zorunda kalmadan var olabildiği bir keşif alanıdır.
             </p>
             <p class="cc-flow__accent">
-              Çocuklarla yapılan çalışmalarda, çocuğun kendini güvende hissettiği ve duygularını rahatça ifade edebildiği bir alan oluşturmak önemlidir. Bu güvenli alan içinde çocuk duygularını keşfetmeyi, onları ifade etmeyi ve düzenlemeyi öğrenir.
-            </p>
-          </div>
-
-          <div class="cc-flow__block">
-            <p class="cc-eyebrow">Süreç</p>
-            <h2>Süreç Nasıl İlerler?</h2>
-            <p class="cc-flow__intro">Terapi sürecinde çocuklarla birlikte:</p>
-            <ul class="cc-flow__list">
-              <li>Duyguları tanıma ve ifade etme</li>
-              <li>Öfke ve kaygıyla baş etme</li>
-              <li>Sosyal becerileri geliştirme</li>
-              <li>Özgüveni destekleme</li>
-              <li>Problem çözme becerileri geliştirme</li>
-            </ul>
-            <p class="cc-flow__after">üzerinde çalışılır.</p>
-          </div>
-
-          <div class="cc-flow__block">
-            <p class="cc-eyebrow">Aile</p>
-            <h2>Aile ile İş Birliği</h2>
-            <p>
-              Çocuk terapisinde aile sürecin önemli bir parçasıdır. Bu nedenle ebeveynlerle yapılan görüşmeler, çocuğun ihtiyaçlarını daha iyi anlamaya ve ev ortamında destekleyici bir yaklaşım oluşturulmasına yardımcı olur.
-            </p>
-            <p>
-              Amaç yalnızca davranışı değiştirmek değil, çocuğun kendini güvende ve anlaşılmış hissettiği bir duygusal alan oluşturmaktır.
+              Bu süreçte amaç yalnızca sorunları çözmek değil; kişinin kendisiyle kurduğu ilişkiyi daha şefkatli, daha farkında ve daha sağlam bir zemine dönüştürmesidir.
             </p>
           </div>
 
           <div class="cc-flow__block cc-flow__support">
             <p class="cc-eyebrow">Destek Alanları</p>
-            <h2>Çocuk terapisine hangi durumlarda başvurulabilir?</h2>
-            <div class="cc-flow__grid">
+            <h2>Yetişkin terapisine hangi durumlarda başvurabilirsiniz?</h2>
+            <div class="cc-flow__grid cc-flow__grid--dense">
               <div>
-                <h3>Duygusal zorluklar:</h3>
                 <ul>
-                  <li>Kaygı ve korkular</li>
-                  <li>Ayrılık kaygısı</li>
-                  <li>Öfke patlamaları</li>
-                  <li>İçine kapanma</li>
-                  <li>Özgüven sorunları</li>
+                  <li>Kaygı ve sürekli endişe hali</li>
+                  <li>Panik atak</li>
+                  <li>Depresyon, isteksizlik ve enerji kaybı</li>
+                  <li>Obsesif düşünceler ve kompulsif davranışlar (OKB)</li>
                 </ul>
               </div>
               <div>
-                <h3>Davranışsal zorluklar:</h3>
                 <ul>
-                  <li>Tırnak yeme</li>
-                  <li>Alt ıslatma / kaka kaçırma</li>
-                  <li>Parmak emme</li>
-                  <li>Tik benzeri davranışlar</li>
+                  <li>İlişki sorunları ve tekrar eden ilişki döngüleri</li>
+                  <li>Öfke ve duygu düzenleme güçlükleri</li>
+                  <li>Sınır koymakta zorlanma</li>
+                  <li>Öz değer ve özgüven sorunları</li>
                 </ul>
               </div>
               <div>
-                <h3>Okul ve sosyal alan:</h3>
                 <ul>
-                  <li>Okula uyum sorunları</li>
-                  <li>Arkadaş ilişkilerinde zorluk</li>
-                  <li>Akran zorbalığı</li>
-                  <li>Derslere odaklanma güçlüğü</li>
-                </ul>
-              </div>
-              <div>
-                <h3>Yaşam olayları:</h3>
-                <ul>
-                  <li>Boşanma süreci</li>
-                  <li>Taşınma veya okul değişimi</li>
-                  <li>Kardeş doğumu</li>
-                  <li>Kayıp ve yas süreçleri</li>
+                  <li>Tükenmişlik ve yoğun stres</li>
+                  <li>Karar verme güçlüğü ve yaşam yönünü sorgulama</li>
+                  <li>Ayrılık, kayıp ve yas süreçleri</li>
+                  <li>Travmatik yaşantıların etkileri</li>
                 </ul>
               </div>
             </div>
+
+            <div class="cc-flow__subgroup">
+              <h3>Davranışsal zorluklar:</h3>
+              <ul>
+                <li>Tırnak yeme</li>
+                <li>Saç / kirpik / kaş yolma (trikotillomani)</li>
+                <li>Erteleme ve motivasyon güçlükleri</li>
+              </ul>
+            </div>
+
+            <div class="cc-flow__subgroup">
+              <h3>Kaygı temelli durumlar:</h3>
+              <ul>
+                <li>Sosyal kaygı</li>
+                <li>Performans kaygısı</li>
+                <li>Özgül fobiler (hayvan korkusu, yükseklik korkusu, uçak korkusu vb.)</li>
+              </ul>
+            </div>
+
+            <div class="cc-flow__subgroup">
+              <h3>Yaşam süreçleri:</h3>
+              <ul>
+                <li>Hayat geçişleri (iş değişimi, taşınma, evlilik vb.)</li>
+                <li>Kendini tanıma ve kişisel gelişim süreci</li>
+                <li>İçsel denge ve yaşam doyumunu artırma isteği</li>
+              </ul>
+            </div>
+
+            <p class="cc-flow__after">
+              Eğer yaşadığınız durum burada yazmıyorsa bile, sizi zorlayan bir deneyimi konuşmak için terapiye başvurabilirsiniz.
+            </p>
           </div>
 
           <div class="cc-flow__block cc-flow__cta">
             <p class="cc-flow__cta-copy">
-              Çocuğunuzun davranışında sizi düşündüren bir değişim fark ediyorsanız, bunu anlamak ve destek almak için terapi süreci yardımcı olabilir.
+              Yaşadığınız deneyimleri daha iyi anlamak ve destek almak için terapi süreci yardımcı olabilir.
             </p>
-            <h2>Çocuğunuz için güvenli bir alan oluşturmak için iletişime geçebilirsiniz.</h2>
+            <h2>Kendiniz için güvenli bir alan oluşturmak için iletişime geçebilirsiniz.</h2>
             <div class="cc-hero__actions">
               <router-link to="/iletisim" class="cc-btn cc-btn--ghost">İletişime Geç</router-link>
               <router-link :to="appointmentLink" class="cc-btn cc-btn--primary">Randevu Talebi Oluştur</router-link>
@@ -129,7 +138,7 @@
 import UiContainer from '../../components/ui/UiContainer.vue'
 const appointmentLink = {
   path: '/randevu-olustur',
-  query: { service: 'Çocuk Danışmanlığı' },
+  query: { service: 'Bireysel Danışmanlık' },
 }
 </script>
 
@@ -144,7 +153,7 @@ const appointmentLink = {
   overflow: hidden;
   padding: clamp(72px, 10vh, 112px) 0 clamp(36px, 6vh, 56px);
   background:
-    radial-gradient(120% 120% at 85% 5%, rgba(255, 240, 236, 0.8) 0%, rgba(252, 247, 245, 0.9) 55%, rgba(247, 242, 239, 0.95) 100%),
+    radial-gradient(120% 120% at 85% 5%, rgba(248, 242, 236, 0.85) 0%, rgba(252, 248, 245, 0.92) 55%, rgba(247, 243, 239, 0.96) 100%),
     linear-gradient(180deg, #ffffff 0%, #f7f2ef 100%);
 }
 
@@ -164,8 +173,8 @@ const appointmentLink = {
   width: clamp(180px, 24vw, 300px);
   height: clamp(180px, 24vw, 300px);
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, rgba(255, 171, 152, 0.35), rgba(255, 214, 200, 0.2) 60%, transparent 70%);
-  opacity: 0.55;
+  background: radial-gradient(circle at 35% 35%, rgba(201, 145, 90, 0.32), rgba(235, 210, 180, 0.2) 60%, transparent 70%);
+  opacity: 0.45;
   pointer-events: none;
 }
 
@@ -253,16 +262,16 @@ const appointmentLink = {
   position: relative;
   border-radius: clamp(22px, 2.6vw, 30px);
   overflow: hidden;
-  background: #fff7f4;
+  background: #f6f0ea;
   box-shadow:
     0 22px 44px rgba(91, 60, 55, 0.16),
     0 8px 16px rgba(91, 60, 55, 0.1);
   min-height: clamp(260px, 32vw, 420px);
-  max-width: 480px;
+  max-width: 460px;
   width: 100%;
 }
 
-.cc-hero__frame::before {
+.cc-hero__frame--adult::before {
   content: '';
   position: absolute;
   inset: 10px;
@@ -277,7 +286,7 @@ const appointmentLink = {
   height: 100%;
   object-fit: cover;
   transform: scale(1.02);
-  filter: saturate(1.05);
+  filter: saturate(1.04);
 }
 
 .cc-body {
@@ -293,7 +302,7 @@ const appointmentLink = {
   width: clamp(200px, 26vw, 360px);
   height: clamp(200px, 26vw, 360px);
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 181, 170, 0.2), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(205, 155, 105, 0.18), transparent 70%);
   pointer-events: none;
 }
 
@@ -321,7 +330,7 @@ const appointmentLink = {
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(211, 125, 108, 0.9);
+  color: rgba(156, 118, 96, 0.9);
 }
 
 .cc-flow__block p {
@@ -332,7 +341,7 @@ const appointmentLink = {
 
 .cc-flow__accent {
   padding-left: 12px;
-  border-left: 2px solid rgba(229, 156, 138, 0.35);
+  border-left: 2px solid rgba(182, 138, 116, 0.35);
 }
 
 .cc-flow__intro {
@@ -346,6 +355,11 @@ const appointmentLink = {
   line-height: 1.68;
 }
 
+.cc-flow__list--grid {
+  display: grid;
+  gap: 6px 18px;
+}
+
 .cc-flow__after {
   margin: 0;
   color: var(--color-body);
@@ -356,10 +370,17 @@ const appointmentLink = {
   gap: 16px;
 }
 
-.cc-flow__grid ul {
+.cc-flow__grid--dense ul,
+.cc-flow__subgroup ul {
   margin: 0;
   padding-left: 1.05rem;
   line-height: 1.65;
+}
+
+.cc-flow__subgroup {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(143, 120, 106, 0.18);
 }
 
 .cc-flow__support {
@@ -384,8 +405,18 @@ const appointmentLink = {
     order: 0;
   }
 
+  .cc-flow__list--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cc-flow__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .cc-flow__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -396,7 +427,7 @@ const appointmentLink = {
 
   .cc-hero__frame {
     min-height: 220px;
-    max-width: 360px;
+    max-width: 340px;
   }
 
   .cc-hero__actions,
