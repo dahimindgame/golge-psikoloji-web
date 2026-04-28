@@ -4,7 +4,6 @@
       <UiContainer>
         <div class="services-hero__grid">
           <div class="services-hero__content">
-            <p class="services-eyebrow">Hizmet Alanı</p>
             <h1>Hizmetler</h1>
             <p class="services-hero__lead">
               Bireysel, ergen, çocuk ve çiftlerle yürütülen terapi süreçlerinde; güvenli, bütünlüklü ve ihtiyaç odaklı bir çalışma alanı sunuyorum.

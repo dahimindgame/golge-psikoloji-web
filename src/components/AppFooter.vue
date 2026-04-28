@@ -2,7 +2,7 @@
   <footer class="footer">
     <SpiralWatermark class="footer-watermark" aria-hidden="true" />
     <UiContainer class="footer-inner">
-      <div class="footer-main">
+      <div class="footer-main" :class="{ 'footer-main--no-contact': !hasFooterContact }">
         <div class="footer-brand">
           <SpiralLogo class="footer-mark" :size="28" />
           <p class="footer-title">Gölge Psikoloji</p>
@@ -11,7 +11,6 @@
           </p>
         </div>
         <div class="footer-links">
-          <h3>Sayfalar</h3>
           <nav class="footer-nav" aria-label="Alt menü">
             <router-link to="/">Ana Sayfa</router-link>
             <router-link to="/hakkimda">Hakkımda</router-link>
@@ -20,7 +19,7 @@
             <router-link to="/iletisim">İletişim</router-link>
           </nav>
         </div>
-        <div class="footer-contact">
+        <div v-if="hasFooterContact" class="footer-contact">
           <h3>İletişim</h3>
           <a v-if="contactInfo.email" :href="`mailto:${contactInfo.email}`">{{ contactInfo.email }}</a>
           <a v-if="contactInfo.phone" :href="phoneHref">{{ contactInfo.phone }}</a>
@@ -34,6 +33,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import UiContainer from './ui/UiContainer.vue'
 import SpiralLogo from './SpiralLogo.vue'
 import SpiralWatermark from './SpiralWatermark.vue'
@@ -41,6 +41,7 @@ import { contactConfig } from '../config/contact'
 
 const contactInfo = contactConfig
 const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '')}` : ''
+const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo.phone))
 </script>
 
 <style scoped>
@@ -70,6 +71,10 @@ const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '
     grid-template-columns: 1.4fr 1fr 1fr;
     align-items: start;
   }
+
+  .footer-main.footer-main--no-contact {
+    grid-template-columns: 1.4fr 1.6fr;
+  }
 }
 
 .footer-brand {
@@ -88,8 +93,8 @@ const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '
 
 .footer-nav {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-wrap: nowrap;
+  gap: 0.75rem 1.25rem;
 }
 
 .footer-contact {
@@ -139,7 +144,7 @@ const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '
 
 .footer-nav a {
   position: relative;
-  width: fit-content;
+  width: auto;
   text-decoration: none;
   opacity: 0.7;
   transition: color var(--transition-fast), opacity var(--transition-fast);
@@ -154,18 +159,12 @@ const phoneHref = contactInfo.phone ? `tel:${contactInfo.phone.replace(/\s+/g, '
   height: 1px;
   background: var(--color-accent);
   opacity: 0.5;
-  transition: width var(--transition-fast);
 }
 
 .footer-nav a:hover,
 .footer-nav a:focus-visible {
   color: var(--color-accent);
   opacity: 1;
-}
-
-.footer-nav a:hover::after,
-.footer-nav a:focus-visible::after {
-  width: 100%;
 }
 
 .footer-legal {

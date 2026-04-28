@@ -4,7 +4,6 @@
       <UiContainer>
         <div class="about-hero__grid">
           <div class="about-hero__content">
-            <p class="about-eyebrow">Hizmet Alanı</p>
             <h1>Hakkımda</h1>
             <p class="about-hero__lead">
               İnsan, çoğu zaman zorlandığı duyguları bastırarak, görmezden gelerek ya da yok sayarak yaşamaya devam etmeye çalışır. Ancak bastırılan her parça, bilinçdışında varlığını sürdürür ve zamanla kaygı, ilişki sorunları, bedensel gerginlikler ya da tekrar eden yaşam döngüleri olarak kendini gösterir.

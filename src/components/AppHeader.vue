@@ -206,6 +206,7 @@ onUnmounted(() => {
   letter-spacing: 0.04em;
   padding: 0.25rem 0;
   position: relative;
+  text-decoration: none;
   transition: color var(--transition-fast), opacity var(--transition-fast);
   opacity: 0.68;
 }
@@ -226,6 +227,7 @@ onUnmounted(() => {
 .nav-link:hover {
   color: var(--color-accent-secondary);
   opacity: 1;
+  text-decoration: none;
 }
 
 .nav-link:focus-visible {
