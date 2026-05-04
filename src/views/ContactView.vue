@@ -3,6 +3,7 @@
     <section class="contact-hero">
       <UiContainer>
         <div class="contact-hero__content">
+          <p class="contact-eyebrow">İletişim</p>
           <h1>İletişim</h1>
           <p class="contact-hero__lead">
             Size uygun bir terapi sürecini birlikte değerlendirmek ve sorularınızı yanıtlamak için iletişime geçebilirsiniz.
@@ -17,72 +18,66 @@
     <section class="contact-body">
       <UiContainer>
         <div class="contact-grid">
-          <div class="contact-info">
-            <h2>İletişim Bilgileri</h2>
-            <ul class="contact-primary-list">
-              <li>
-                <span>Adres</span>
-                <p>{{ resolvedAddress || 'Belirtilmedi' }}</p>
-              </li>
-              <li>
-                <span>Telefon</span>
-                <a v-if="resolvedPhone" :href="phoneHref">{{ resolvedPhone }}</a>
-                <p v-else>Belirtilmedi</p>
-              </li>
-              <li>
-                <span>E-posta</span>
-                <a v-if="resolvedEmail" :href="`mailto:${resolvedEmail}`">{{ resolvedEmail }}</a>
-                <p v-else>Belirtilmedi</p>
-              </li>
-              <li v-if="contactInfo.workingHours">
-                <span>Çalışma Saatleri</span>
-                <p>{{ contactInfo.workingHours }}</p>
-              </li>
-            </ul>
-            <p v-if="contactInfo.appointmentNote" class="contact-note">
-              {{ contactInfo.appointmentNote }}
-            </p>
-          </div>
-
-          <div class="contact-cta">
-            <p class="contact-cta__copy">
-              Görüşme planlamak veya ön bilgi almak için size uygun kanaldan yazabilirsiniz.
-            </p>
-            <div class="contact-cta__actions">
-              <a
-                v-if="whatsappUrl"
-                :href="whatsappUrl"
-                class="contact-btn contact-btn--ghost"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp ile iletişime geç"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="contact-btn__icon">
+          <div class="contact-cards">
+            <div v-if="phoneValue" class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-card__icon">
                   <path
                     fill="currentColor"
-                    d="M19.05 4.94A9.9 9.9 0 0 0 12 2a10 10 0 0 0-8.74 14.86L2 22l5.26-1.23A10 10 0 1 0 19.05 4.94Zm-7.05 15.3a8.3 8.3 0 0 1-4.24-1.16l-.3-.18-3.12.73.75-3.04-.2-.32a8.3 8.3 0 1 1 7.11 3.97Zm4.56-6.23c-.25-.12-1.46-.72-1.68-.8-.22-.08-.39-.12-.55.12s-.63.8-.77.96c-.14.16-.28.18-.53.06a6.8 6.8 0 0 1-2-1.24 7.5 7.5 0 0 1-1.38-1.72c-.15-.25-.02-.38.11-.5.11-.11.25-.28.38-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.8-.2-.48-.4-.42-.55-.42h-.47a.9.9 0 0 0-.65.3c-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.58 4.11 3.62.57.25 1.02.4 1.37.52.58.18 1.1.15 1.52.09.46-.07 1.46-.6 1.67-1.19.2-.58.2-1.08.14-1.18-.05-.1-.21-.16-.46-.28Z"
+                    d="M7.2 3.5h2.6l1.1 4.4-1.9 1.1a8.6 8.6 0 0 0 4 4l1.1-1.9 4.4 1.1v2.6a2 2 0 0 1-2 2A12.6 12.6 0 0 1 3.2 5.5a2 2 0 0 1 2-2Z"
                   />
                 </svg>
-                <span class="sr-only">WhatsApp</span>
-              </a>
-              <a
-                v-if="instagramDmUrl"
-                :href="instagramDmUrl"
-                class="contact-btn contact-btn--ghost"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram ile iletişime geç"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="contact-btn__icon">
+              </div>
+              <div>
+                <p class="contact-card__label">Telefon</p>
+                <a :href="phoneHref" class="contact-card__value">{{ phoneValue }}</a>
+              </div>
+            </div>
+            <div v-if="emailValue" class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-card__icon">
+                  <path
+                    fill="currentColor"
+                    d="M4.5 6.5h15a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16v-8A1.5 1.5 0 0 1 4.5 6.5Zm0 1.7v.1l7.5 4.4 7.5-4.4v-.1h-15Zm15 2.1-6.9 4.1a1.5 1.5 0 0 1-1.5 0l-6.9-4.1V16h15v-5.7Z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p class="contact-card__label">E-posta</p>
+                <a :href="`mailto:${emailValue}`" class="contact-card__value">{{ emailValue }}</a>
+              </div>
+            </div>
+            <div v-if="instagramValue" class="contact-card">
+              <div class="contact-card__icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-card__icon">
                   <path
                     fill="currentColor"
                     d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.7A4.05 4.05 0 0 0 3.7 7.75v8.5a4.05 4.05 0 0 0 4.05 4.05h8.5a4.05 4.05 0 0 0 4.05-4.05v-8.5A4.05 4.05 0 0 0 16.25 3.7h-8.5ZM12 7.9A4.1 4.1 0 1 1 7.9 12 4.1 4.1 0 0 1 12 7.9Zm0 1.7A2.4 2.4 0 1 0 14.4 12 2.4 2.4 0 0 0 12 9.6Zm4.45-2.05a1.05 1.05 0 1 1-1.05 1.05 1.05 1.05 0 0 1 1.05-1.05Z"
                   />
                 </svg>
-                <span class="sr-only">Instagram</span>
-              </a>
+              </div>
+              <div>
+                <p class="contact-card__label">Instagram</p>
+                <a :href="instagramValue" class="contact-card__value" target="_blank" rel="noopener noreferrer">
+                  Instagram profilini ziyaret et
+                </a>
+              </div>
+            </div>
+            <div v-if="!hasContactDetails" class="contact-empty">
+              <p>İletişim bilgileri şu anda yüklenemedi. Lütfen `.env` değerlerini kontrol edin.</p>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <p class="contact-cta__copy">
+              Size en uygun kanalı seçerek hızlıca iletişime geçebilirsiniz.
+            </p>
+            <div class="contact-cta__actions">
               <router-link to="/randevu-olustur" class="contact-btn contact-btn--primary">Randevu Talebi Oluştur</router-link>
             </div>
+            <p v-if="contactInfo.appointmentNote" class="contact-note">
+              {{ contactInfo.appointmentNote }}
+            </p>
           </div>
         </div>
       </UiContainer>
@@ -91,58 +86,31 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
 import UiContainer from '../components/ui/UiContainer.vue'
 import { contactConfig } from '../config/contact'
-import { createWhatsappUrl } from '../utils/whatsapp'
 
 const root = ref(null)
 useReveal(root)
 
 const contactInfo = contactConfig
-const env = import.meta.env || {}
-const envWhatsappEnabled = env.VITE_WHATSAPP_ENABLED !== 'false'
-const envWhatsappNumber = env.VITE_WHATSAPP_NUMBER || ''
-const envWhatsappMessage = env.VITE_WHATSAPP_DEFAULT_MESSAGE || 'Merhaba, bilgi almak istiyorum.'
-const envWhatsappCountryCode = env.VITE_WHATSAPP_COUNTRY_CODE || '90'
-const envInstagramUrl = env.VITE_INSTAGRAM_URL || ''
-const envInstagramUsername = env.VITE_INSTAGRAM_USERNAME || ''
-const envInstagramDmUrl = env.VITE_INSTAGRAM_DM_URL || ''
-const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+const env = import.meta?.env || {}
+const rawPhone = contactInfo.phone || env.VITE_CONTACT_PHONE || contactInfo.whatsapp?.number || ''
+const emailValue = contactInfo.email || env.VITE_CONTACT_EMAIL || ''
+const instagramValue = contactInfo.instagram?.url || env.VITE_INSTAGRAM_URL || ''
 
-const resolvedAddress = computed(() => contactInfo.address || env.VITE_CONTACT_ADDRESS || '')
-const resolvedPhone = computed(() => contactInfo.phone || env.VITE_CONTACT_PHONE || '')
-const resolvedEmail = computed(() => contactInfo.email || env.VITE_CONTACT_EMAIL || '')
-const phoneHref = computed(() =>
-  resolvedPhone.value ? `tel:${resolvedPhone.value.replace(/\s+/g, '')}` : ''
-)
-const whatsappUrl = computed(() => {
-  const isEnabled = contactInfo.whatsapp?.enabled ?? envWhatsappEnabled
-  if (!isEnabled) return ''
-  const targetNumber = contactInfo.whatsapp?.number || resolvedPhone.value || envWhatsappNumber
-  const defaultMessage = contactInfo.whatsapp?.defaultMessage || envWhatsappMessage
-  const defaultCountryCode = contactInfo.whatsapp?.defaultCountryCode || envWhatsappCountryCode
-  return createWhatsappUrl(
-    defaultMessage,
-    targetNumber,
-    defaultCountryCode
-  )
-})
-const instagramDmUrl = computed(() => {
-  const username = (contactInfo.instagram?.username || envInstagramUsername || '').replace(/^@/, '')
-  const profileUrl = contactInfo.instagram?.url || envInstagramUrl
-  const directDm = contactInfo.instagram?.dmUrl || envInstagramDmUrl
+const formatPhoneDisplay = (value) => {
+  const digits = String(value || '').replace(/\D/g, '')
+  if (!digits) return ''
+  const normalized = digits.startsWith('90') ? digits : digits.startsWith('0') ? `90${digits.slice(1)}` : `90${digits}`
+  if (normalized.length < 12) return `+${normalized}`
+  return `+${normalized.slice(0, 2)} ${normalized.slice(2, 5)} ${normalized.slice(5, 8)} ${normalized.slice(8, 10)} ${normalized.slice(10, 12)}`
+}
 
-  if (isMobileDevice) {
-    if (directDm) return directDm.replace('https://www.instagram.com/m/', 'https://ig.me/m/')
-    if (username) return `https://ig.me/m/${username}`
-  }
-
-  if (profileUrl) return profileUrl
-  if (username) return `https://www.instagram.com/${username}/`
-  return ''
-})
+const phoneValue = formatPhoneDisplay(rawPhone)
+const phoneHref = rawPhone ? `tel:${String(rawPhone).replace(/\s+/g, '')}` : ''
+const hasContactDetails = Boolean(phoneValue || emailValue || instagramValue)
 </script>
 
 <style scoped>
@@ -199,64 +167,77 @@ const instagramDmUrl = computed(() => {
 
 .contact-grid {
   display: grid;
-  gap: 24px;
+  gap: 28px;
 }
 
-.contact-info {
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(143, 120, 106, 0.18);
+.contact-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(143, 120, 106, 0.16);
   border-radius: 20px;
-  padding: 20px 22px;
-  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+  box-shadow: 0 14px 26px rgba(51, 46, 43, 0.08);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.contact-info h2 {
-  margin: 0 0 12px;
-  font-size: 1.2rem;
-  color: var(--color-heading);
-}
-
-.contact-info ul {
+.contact-card__label {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-
-.contact-social-list {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(143, 120, 106, 0.18);
-  gap: 10px;
-}
-
-.contact-info li {
-  display: grid;
-  gap: 6px;
-}
-
-.contact-info span {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
-.contact-info a,
-.contact-info p {
+.contact-card__value {
   margin: 0;
   color: var(--color-body);
   font-size: 1rem;
   text-decoration: none;
 }
 
-.contact-info a:hover {
+.contact-card__value:hover {
   color: var(--color-accent);
 }
 
-.contact-social-list a {
-  font-weight: 500;
+.contact-card__icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(156, 118, 96, 0.12);
+  color: rgba(95, 77, 66, 0.9);
+}
+
+.contact-card__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(51, 46, 43, 0.12);
+}
+
+.contact-empty {
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px dashed rgba(143, 120, 106, 0.32);
+  color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.contact-empty p {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .contact-note {
@@ -324,28 +305,14 @@ const instagramDmUrl = computed(() => {
   transform: translateY(-2px);
 }
 
-.contact-btn__icon {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 @media (min-width: 900px) {
   .contact-grid {
     grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr);
     align-items: start;
+  }
+
+  .contact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

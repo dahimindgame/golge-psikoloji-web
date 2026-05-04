@@ -278,15 +278,24 @@ onUnmounted(() => {
 }
 
 .nav-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 0 1.5rem 1.5rem;
+  padding: 0.6rem 1.5rem 1.5rem;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
   transform: translateY(-6px);
   transition: max-height var(--transition-normal), opacity var(--transition-normal), transform var(--transition-normal);
+  background: rgba(252, 248, 245, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 18px 32px rgba(51, 46, 43, 0.12);
 }
 
 @media (min-width: 900px) {

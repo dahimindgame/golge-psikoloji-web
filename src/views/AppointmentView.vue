@@ -35,7 +35,10 @@
                 v-model.trim="form.phone"
                 type="tel"
                 autocomplete="tel"
+                inputmode="tel"
+                placeholder="05xx xxx xx xx"
                 :aria-invalid="Boolean(errors.phone)"
+                @input="handlePhoneInput"
               />
               <span v-if="errors.phone" class="error">{{ errors.phone }}</span>
             </div>
@@ -46,7 +49,10 @@
                 v-model.trim="form.email"
                 type="email"
                 autocomplete="email"
+                inputmode="email"
+                placeholder="ornek@mail.com"
                 :aria-invalid="Boolean(errors.email)"
+                @input="handleEmailInput"
               />
               <span v-if="errors.email" class="error">{{ errors.email }}</span>
             </div>
@@ -177,7 +183,7 @@ import { computed, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useReveal } from '../composables/useReveal'
 import { contactConfig } from '../config/contact'
-import { createAppointmentWhatsappMessage, createWhatsappUrl } from '../utils/whatsapp'
+import { createAppointmentWhatsappMessage, createWhatsappUrl, normalizeWhatsappNumber } from '../utils/whatsapp'
 
 const root = ref(null)
 useReveal(root)
@@ -310,13 +316,35 @@ function toggleTime(time) {
 
 function setErrors() {
   errors.fullName = form.fullName ? '' : 'Ad soyad gereklidir.'
-  errors.phone = form.phone ? '' : 'Telefon gereklidir.'
+  const phoneDigits = form.phone.replace(/\D/g, '')
+  errors.phone = phoneDigits.length >= 10 ? '' : 'Geçerli bir telefon numarası girin.'
   errors.meetingType = form.meetingType ? '' : 'Görüşme türü seçiniz.'
   errors.supportTopic = form.supportTopic ? '' : 'Destek konusunu seçiniz.'
   errors.email = form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
     ? 'Geçerli bir e-posta adresi girin.'
     : ''
   errors.consent = form.consent ? '' : 'İletişim izni gereklidir.'
+}
+
+function formatPhone(value) {
+  const digits = String(value || '').replace(/\D/g, '').slice(0, 11)
+  if (!digits) return ''
+  const normalized = digits.startsWith('0') ? digits : `0${digits}`
+  const parts = [
+    normalized.slice(0, 4),
+    normalized.slice(4, 7),
+    normalized.slice(7, 9),
+    normalized.slice(9, 11),
+  ].filter(Boolean)
+  return parts.join(' ')
+}
+
+function handlePhoneInput(event) {
+  form.phone = formatPhone(event.target.value)
+}
+
+function handleEmailInput(event) {
+  form.email = String(event.target.value || '').trim().toLowerCase()
 }
 
 function resetStatus() {
@@ -352,7 +380,14 @@ async function handleSubmit() {
   isSubmitting.value = true
 
   try {
-    if (!contactConfig.whatsapp?.enabled || !contactConfig.whatsapp?.number) {
+    const whatsappEnabled = contactConfig.whatsapp?.enabled !== false
+    const rawWhatsappNumber = contactConfig.whatsapp?.number || contactConfig.phone || ''
+    const normalizedWhatsappNumber = normalizeWhatsappNumber(
+      rawWhatsappNumber,
+      contactConfig.whatsapp?.defaultCountryCode
+    )
+
+    if (!whatsappEnabled || !normalizedWhatsappNumber) {
       submitStatus.value = 'error'
       submitMessage.value = 'WhatsApp iletişim bilgisi şu anda tanımlı değil.'
       return
@@ -370,8 +405,8 @@ async function handleSubmit() {
 
     const whatsappUrl = createWhatsappUrl(
       message,
-      contactConfig.whatsapp.number,
-      contactConfig.whatsapp.defaultCountryCode
+      normalizedWhatsappNumber,
+      contactConfig.whatsapp?.defaultCountryCode
     )
 
     if (!whatsappUrl) {

@@ -12,11 +12,6 @@
               Her hizmet alanı kendi dinamiğine sahip olsa da, ortak amaç; kişiyi daha açık, daha dengeli ve daha destekleyici bir ilişki zeminiyle buluşturmaktır.
             </p>
           </div>
-          <div class="services-hero__media">
-            <div class="services-hero__frame">
-              <img :src="heroMain" alt="" aria-hidden="true" />
-            </div>
-          </div>
         </div>
       </UiContainer>
     </section>
@@ -62,7 +57,6 @@ import { ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
 import UiContainer from '../components/ui/UiContainer.vue'
 
-import heroMain from '../assets/hero/hero-main-640.svg'
 import serviceChild from '../assets/services/cocuk.jpeg'
 import serviceTeen from '../assets/services/ergen.jpeg'
 import serviceAdult from '../assets/services/yetiskin.jpeg'
@@ -158,38 +152,6 @@ const services = [
 
 .services-hero__note {
   color: var(--color-muted);
-}
-
-.services-hero__media {
-  position: relative;
-  order: -1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.services-hero__frame {
-  position: relative;
-  border-radius: clamp(22px, 2.6vw, 30px);
-  overflow: hidden;
-  background: #f6f0ea;
-  box-shadow:
-    0 22px 44px rgba(91, 60, 55, 0.16),
-    0 8px 16px rgba(91, 60, 55, 0.1);
-  min-height: 220px;
-  max-width: 360px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-}
-
-.services-hero__frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0.9;
 }
 
 .services-body {
@@ -314,14 +276,6 @@ const services = [
 }
 
 @media (min-width: 900px) {
-  .services-hero__grid {
-    grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr);
-  }
-
-  .services-hero__media {
-    order: 0;
-  }
-
   .services-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -330,11 +284,6 @@ const services = [
 @media (max-width: 700px) {
   .services-hero {
     padding-top: 64px;
-  }
-
-  .services-hero__frame {
-    min-height: 200px;
-    max-width: 320px;
   }
 
   .services-cta__actions {
