@@ -1,10 +1,12 @@
 import 'dotenv/config'
 import express from 'express'
+import { registerBlogRoutes } from './blogRoutes.js'
 
 const app = express()
 const port = process.env.PORT || 3001
 
-app.use(express.json({ limit: '20kb' }))
+app.use(express.json({ limit: '200kb' }))
+registerBlogRoutes(app)
 
 const sanitize = (value) => String(value ?? '').replace(/[\r\n]+/g, ' ').trim()
 

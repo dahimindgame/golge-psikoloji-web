@@ -72,6 +72,18 @@ const routes = [
     meta: { title: 'Blog' },
   },
   {
+    path: '/blog/:slug',
+    name: 'blog-post',
+    component: () => import('../views/BlogPostView.vue'),
+    meta: { title: 'Blog' },
+  },
+  {
+    path: '/yonetim',
+    name: 'admin-blog',
+    component: () => import('../views/AdminBlogView.vue'),
+    meta: { title: 'Yönetim' },
+  },
+  {
     path: '/iletisim',
     name: 'contact',
     component: () => import('../views/ContactView.vue'),

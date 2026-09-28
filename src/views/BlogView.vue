@@ -6,7 +6,8 @@
       <p class="lead">
         Psikoloji ve kişisel gelişim üzerine yazılarım.
       </p>
-      <ul class="post-list">
+      <p v-if="loadError" class="empty">Yazılar şu an yüklenemiyor.</p>
+      <ul v-else class="post-list">
         <li v-for="post in posts" :key="post.slug" class="post-item">
           <router-link :to="`/blog/${post.slug}`" class="post-link">
             <h2 class="post-title">{{ post.title }}</h2>
@@ -15,20 +16,31 @@
           </router-link>
         </li>
       </ul>
-      <p v-if="posts.length === 0" class="empty">Yazılar yakında eklenecek.</p>
+      <p v-if="!loadError && posts.length === 0" class="empty">Yazılar yakında eklenecek.</p>
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useReveal } from '../composables/useReveal'
 import SpiralWatermark from '../components/SpiralWatermark.vue'
 
 const root = ref(null)
 useReveal(root)
 
-const posts = []
+const posts = ref([])
+const loadError = ref(false)
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/api/posts')
+    if (!response.ok) throw new Error('posts')
+    posts.value = await response.json()
+  } catch {
+    loadError.value = true
+  }
+})
 
 function formatDate(dateStr) {
   const d = new Date(dateStr)

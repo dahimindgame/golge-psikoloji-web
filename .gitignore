@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+data/posts.json
+secrets/
 
 # Editor directories and files
 .vscode/*
