@@ -1,9 +1,8 @@
 <template>
   <header class="header" ref="headerRef">
     <UiContainer class="header-inner">
-      <router-link to="/" class="brandLogo logo-wrap" aria-label="Gölge Psikoloji ana sayfa">
-        <SpiralLogo class="brand-mark" :size="40" />
-        <span class="brand-text">GÖLGE PSİKOLOJİ</span>
+      <router-link to="/" class="logo-wrap" aria-label="Gölge Psikoloji ana sayfa">
+        <img class="brand-lockup" src="/brand/logo-wordmark.png" alt="" />
       </router-link>
       <div class="header-spacer" aria-hidden="true" />
       <div class="header-right">
@@ -48,7 +47,6 @@
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import UiContainer from './ui/UiContainer.vue'
-import SpiralLogo from './SpiralLogo.vue'
 
 const open = ref(false)
 const headerRef = ref(null)
@@ -104,7 +102,7 @@ onUnmounted(() => {
   position: sticky;
   top: 0;
   z-index: 10;
-  height: 88px;
+  min-height: 108px;
   background: var(--glass-bg);
   backdrop-filter: blur(var(--blur-md));
   -webkit-backdrop-filter: blur(var(--blur-md));
@@ -131,35 +129,23 @@ onUnmounted(() => {
 
 .logo-wrap {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 7px;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
+  line-height: 0;
 }
 
-.brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.brand-text {
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  line-height: 1.2;
-  text-align: center;
-  color: #6B625C;
+.brand-lockup {
+  height: 84px;
+  width: auto;
+  max-width: min(280px, 46vw);
+  display: block;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
-  .logo-wrap {
-    gap: 6px;
-  }
-
-  .brand-text {
-    font-size: 11.5px;
-    letter-spacing: 0.16em;
+  .brand-lockup {
+    height: 64px;
   }
 }
 

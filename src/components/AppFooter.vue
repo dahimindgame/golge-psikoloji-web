@@ -4,11 +4,7 @@
     <UiContainer class="footer-inner">
       <div class="footer-main" :class="{ 'footer-main--no-contact': !hasFooterContact }">
         <div class="footer-brand">
-          <SpiralLogo class="footer-mark" :size="28" />
-          <p class="footer-title">Gölge Psikoloji</p>
-          <p class="footer-tagline">
-            İç dünyanızda güven ve sakinlik için yanınızdayım.
-          </p>
+          <img class="footer-lockup" src="/brand/logo-lockup.png" alt="Gölge Psikoloji" />
         </div>
         <div class="footer-links">
           <nav class="footer-nav" aria-label="Alt menü">
@@ -20,7 +16,6 @@
           </nav>
         </div>
         <div v-if="hasFooterContact" class="footer-contact">
-          <h3>İletişim</h3>
           <a v-if="contactInfo.email" :href="`mailto:${contactInfo.email}`">{{ contactInfo.email }}</a>
           <a v-if="contactInfo.phone" :href="phoneHref">{{ contactInfo.phone }}</a>
         </div>
@@ -35,7 +30,6 @@
 <script setup>
 import { computed } from 'vue'
 import UiContainer from './ui/UiContainer.vue'
-import SpiralLogo from './SpiralLogo.vue'
 import SpiralWatermark from './SpiralWatermark.vue'
 import { contactConfig } from '../config/contact'
 
@@ -55,10 +49,12 @@ const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo
 }
 
 .footer-inner {
-  padding: clamp(4rem, 6vw, 5rem) 0;
+  position: relative;
+  z-index: 1;
+  padding: clamp(3.5rem, 6vw, 4.5rem) 0;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .footer-main {
@@ -68,20 +64,25 @@ const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo
 
 @media (min-width: 960px) {
   .footer-main {
-    grid-template-columns: 1.4fr 1fr 1fr;
-    align-items: start;
+    grid-template-columns: minmax(220px, 1.15fr) minmax(0, 1.6fr) minmax(180px, 0.7fr);
+    align-items: center;
+    column-gap: 2rem;
   }
 
   .footer-main.footer-main--no-contact {
-    grid-template-columns: 1.4fr 1.6fr;
+    grid-template-columns: minmax(220px, 1fr) minmax(0, 1.4fr);
   }
 }
 
 .footer-brand {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 38ch;
+  max-width: 340px;
+}
+
+.footer-lockup {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .footer-links h3,
@@ -93,34 +94,14 @@ const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo
 
 .footer-nav {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 0.75rem 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.35rem;
 }
 
 .footer-contact {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-}
-
-.footer-title {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-main);
-  letter-spacing: 0.02em;
-}
-
-.footer-mark {
-  display: inline-flex;
-  opacity: 0.85;
-}
-
-.footer-tagline {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
 }
 
 .footer-contact a,
@@ -144,7 +125,8 @@ const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo
 
 .footer-nav a {
   position: relative;
-  width: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
   text-decoration: none;
   opacity: 0.7;
   transition: color var(--transition-fast), opacity var(--transition-fast);
@@ -179,27 +161,31 @@ const hasFooterContact = computed(() => Boolean(contactInfo.email || contactInfo
   color: var(--color-muted);
 }
 
-.footer-watermark {
-  position: absolute;
-  right: -40px;
-  bottom: -60px;
-  width: clamp(180px, 22vw, 260px);
-  opacity: 0.04;
+.footer :deep(.footer-watermark) {
+  top: auto;
+  right: -88px;
+  bottom: -110px;
+  width: 200px;
+  opacity: 0.16;
   pointer-events: none;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 959px) {
   .footer-main {
     text-align: center;
     justify-items: center;
   }
 
-  .footer-nav a {
-    width: auto;
+  .footer-nav {
+    justify-content: center;
   }
 
   .footer-contact {
     align-items: center;
+  }
+
+  .footer :deep(.footer-watermark) {
+    display: none;
   }
 }
 </style>

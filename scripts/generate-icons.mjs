@@ -1,10 +1,8 @@
-import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
 
 const projectRoot = path.resolve(process.cwd())
-const svgPath = path.join(projectRoot, 'public', 'brand', 'logo-mark.svg')
-const svgBuffer = await readFile(svgPath)
+const logoPath = path.join(projectRoot, 'public', 'brand', 'logo-mark.png')
 
 const outputs = [
   { filename: 'favicon-16x16.png', size: 16 },
@@ -17,8 +15,9 @@ const outputs = [
 
 await Promise.all(
   outputs.map(({ filename, size }) =>
-    sharp(svgBuffer, { density: 300 })
+    sharp(logoPath)
       .resize(size, size)
+      .flatten({ background: '#F3EFEA' })
       .png({ compressionLevel: 9 })
       .toFile(path.join(projectRoot, 'public', filename))
   )

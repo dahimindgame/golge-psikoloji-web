@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import logoSrc from '/brand/logo-mark.svg'
+import logoSrc from '/brand/logo-mark.png'
 
 defineProps({
   compact: {
@@ -21,7 +21,7 @@ defineProps({
   right: -140px;
   top: 80px;
   width: clamp(220px, 28vw, 520px);
-  opacity: 0.05;
+  opacity: 0.42;
   pointer-events: none;
   z-index: 0;
 }
@@ -30,6 +30,7 @@ defineProps({
   width: 100%;
   height: auto;
   display: block;
+  mix-blend-mode: multiply;
 }
 
 @media (max-width: 768px) {
@@ -37,7 +38,7 @@ defineProps({
     width: clamp(160px, 45vw, 300px);
     right: -60px;
     top: 20px;
-    opacity: 0.04;
+    opacity: 0.32;
   }
 }
 

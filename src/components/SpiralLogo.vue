@@ -1,6 +1,6 @@
 <template>
   <div class="spiral-logo" :style="{ '--logo-size': sizeStyle }" aria-hidden="true">
-    <img class="spiral-logo__img" src="/brand/logo-mark.svg" alt="" />
+    <img class="spiral-logo__img" src="/brand/logo-mark.png" alt="" />
   </div>
 </template>
 
@@ -30,5 +30,7 @@ const sizeStyle = computed(() => (typeof props.size === 'number' ? `${props.size
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 </style>

@@ -179,7 +179,7 @@ h3 { font-size: clamp(1.125rem, 2.5vw, 1.375rem); }
   top: -32px;
   right: -24px;
   width: clamp(120px, 16vw, 180px);
-  opacity: 0.05;
+  opacity: 0.22;
   pointer-events: none;
   z-index: 0;
 }
